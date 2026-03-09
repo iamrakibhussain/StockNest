@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenBasket Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#">GreenBasket</a>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="#categories">Categories</a>
+        <a href="#products">Products</a>
+        <a href="#deals">Deals</a>
+      </nav>
+      <div class="nav-actions">
+        <input id="shopSearch" type="search" placeholder="Search products..." aria-label="Search products" />
+        <button id="cartBtn" class="cart-btn" type="button">Cart <span id="cartCount">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <!-- Fixed text encoding issue for clean UI copy -->
+        <p class="tag">Fast Delivery - Secure Checkout</p>
+        <h1>Fresh groceries and daily essentials at your fingertips.</h1>
+        <p>Shop top-quality products, add to cart, and place your order in minutes.</p>
+        <div class="hero-actions">
+          <button id="shopNowBtn" type="button">Shop Now</button>
+          <button id="viewDealsBtn" class="ghost" type="button">View Deals</button>
+        </div>
+      </div>
+      <div class="hero-card" id="deals">
+        <p class="deal-title">Today Specials</p>
+        <ul>
+          <li>Up to 20% off on Dairy</li>
+          <li>Buy 2 get 1 on Snacks</li>
+          <li>Free delivery over 1000 BDT</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="categories" class="shell section">
+      <div class="section-head">
+        <h2>Shop by Category</h2>
+      </div>
+      <div id="categoryRow" class="category-row">
+        <button class="category-chip active" type="button" data-category="">All</button>
+      </div>
+    </section>
+
+    <section id="products" class="shell section">
+      <div class="section-head">
+        <h2>Featured Products</h2>
+        <select id="sortSelect" aria-label="Sort products">
+          <option value="default">Sort: Default</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="name">Name: A-Z</option>
+        </select>
+      </div>
+
+      <!-- Added aria-live so screen readers can announce loading updates -->
+      <p id="productsLoading" class="products-loading" aria-live="polite">Loading products...</p>
+      <div id="productGrid" class="product-grid"></div>
+      <!-- Added aria-live so empty-state updates are announced accessibly -->
+      <p id="productsEmpty" class="products-empty" aria-live="polite" hidden>No products available right now.</p>
+    </section>
+  </main>
+
+  <aside id="cartPanel" class="cart-panel" aria-label="Shopping cart">
+    <div class="cart-head">
+      <h3>Your Cart</h3>
+      <button id="closeCartBtn" type="button">Close</button>
+    </div>
+    <div id="cartItems" class="cart-items">
+      <p class="empty-cart">No items added yet.</p>
+    </div>
+    <div class="cart-foot">
+      <p>Total: <strong id="cartTotal">0 BDT</strong></p>
+      <button id="checkoutBtn" type="button">Place Order</button>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="shell footer-wrap">
+      <p>GreenBasket</p>
+      <p>Powered by StockNest</p>
+    </div>
+  </footer>
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>

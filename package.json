@@ -1,0 +1,22 @@
+{
+  "name": "stocknest",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "`StockNest is a full-stack inventory and sales tracking web app built with Express, SQLite, and vanilla JavaScript, designed for small shops to manage products, monitor stock, and record daily sales.`",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "nodemon --env-file=.env server.js"
+  },
+  "author": "Rakib Hussain",
+  "license": "UNLICENCED",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "sql": "^0.78.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
