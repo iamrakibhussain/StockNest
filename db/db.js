@@ -1,4 +1,5 @@
 import path from 'node:path'
+import fs from 'node:fs/promises'
 import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 import { fileURLToPath } from 'node:url'
@@ -12,6 +13,19 @@ export async function getDBConnection() {
     const dbpath = path.isAbsolute(dbFileName)
         ? dbFileName
         : path.join(__dirname, '..', dbFileName)
+
+    // If running on a host with a persistent disk, seed the DB once if missing.
+    const seedPath = path.join(__dirname, '..', 'database.db')
+    try {
+        await fs.access(dbpath)
+    } catch {
+        try {
+            await fs.mkdir(path.dirname(dbpath), { recursive: true })
+            await fs.copyFile(seedPath, dbpath)
+        } catch {
+            // If seed is missing, SQLite will create an empty DB file.
+        }
+    }
 
     const db = await open({
         filename: dbpath,
